@@ -8,13 +8,15 @@ import javax.persistence.*;
 @Entity
 public class Orden{
 
-  @Id
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
 
-  private int numOrden;
-  private String tituloOrden; //TODO: Queremos que sea TINYTEXT. Necesitamos @Lob?
-  @Lob
-  @Column(columnDefinition = "text") //21,844 caracteres ut-8 como maximo.
-  private String contenido;
+    @Lob
+    @Column(columnDefinition = "tinytext")
+    private int numOrden;
+    private String tituloOrden; //TODO: Queremos que sea TINYTEXT. Necesitamos @Lob?
+    @Lob
+    @Column(columnDefinition = "text") //21,844 caracteres ut-8 como maximo.
+    private String contenido;
 }
