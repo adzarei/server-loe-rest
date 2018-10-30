@@ -52,6 +52,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         orden.setNumOrden(1);
         orden.setTituloOrden("Primera Orden");
         orden.setContenido("Este es el contenido de la orden numero uno.");
+        orden.addAdjunto(adjunto);
         /*List<Adjunto> adjuntos = new ArrayList<>();
         adjuntos.add(adjunto);
         orden.setAdjuntos(adjuntos);
@@ -65,7 +66,6 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         acta.setNumlibro("VLC-00012");
         acta.addOrden(orden);
 
-        actaRepository.save(acta);
         adjuntoRepository.save(adjunto);
         ordenRepository.save(orden);
 
@@ -76,11 +76,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         firma.setEmail("AdrianZapater@gmail.com");
         firma.setSello("sfd6g4n3dh4n3xg4n3djhm4s3m43gh4n3ghmchg3nf3hj43th43st7hs4gb34gn34gnb3xd4gb");
         firma.setTipoAgente(TipoAgente.DO);
-        firma = firmaRepository.save(firma);
+        acta.addFirma(firma);
 
-        List<Firma> firmas= new ArrayList<>();
-        firmas.add(firma);
-        acta.setFirmas(firmas);
+        firmaRepository.save(firma);
+        actaRepository.save(acta);
 
         Agente agente = new Agente();
         agente.setFFin(LocalDateTime.now());
@@ -88,8 +87,6 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         agente.setIdFiscal("21804947G");
         agente.setNombre("José Zapater");
         agente.setTipoAgente(TipoAgente.DO);
-        agente = agenteRepository.save(agente);
-
 
         Libro libro1 = new Libro();
         libro1.setNumlibro("VLC-00012");
@@ -104,21 +101,14 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         libro1.setNumLicencia("Num_Licnecia_001");
         libro1.setObra("Nombre de Obra 01");
         libro1.setSituacion("Calle Lope  de Rueda 15, 7");
+        libro1.addAgente(agente);
+
+        libro1.addActas(acta);
+        libro1.addFirma(firma);
+        libro1.addAgente(agente);
 
 
-        List<Acta> actas= new ArrayList<>();
-        actas.add(acta);
-        libro1.setActas(actas);
-
-        libro1.setFirmas(firmas);
-
-        agente.setLibro(libro1);
-        List<Agente> agentes = new ArrayList<>();
-        agentes.add(agente);
-        libro1.setAgentes(agentes);
-
-
-
+        agenteRepository.save(agente);
         libroRepository.save(libro1);
 
 
