@@ -103,7 +103,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         libro1.setSituacion("Calle Lope  de Rueda 15, 7");
         libro1.addAgente(agente);
 
-        libro1.addActas(acta);
+        libro1.addActa(acta);
         libro1.addFirma(firma);
         libro1.addAgente(agente);
 
