@@ -28,12 +28,28 @@ public class Libro {
     private LocalDateTime fCAE;
 
     @OneToMany(orphanRemoval = true,mappedBy = "libro")
-    private List<Agente> agentes;
+    private List<Agente> agentes = new ArrayList<>();
 
     @OneToMany(orphanRemoval = true,mappedBy = "libro")
-    private List<Acta> actas;
+    private List<Acta> actas = new ArrayList<>();
 
     @OneToMany(orphanRemoval = true) //TODO: decide on relation
-    private List<Firma> firmas;
+    private List<Firma> firmas = new ArrayList<>();
+    
+    public Firma addFirma(Firma firma){
+      firmas.add(firma);
+      return firma;
+    }
+
+    public Agente addAgente (Agente agente){
+      agente.setLibro(this);
+      this.agentes.add(agente);
+      return agente;
+    }
+
+    public Acta addActa(Acta acta){
+      acta.setLibro(this);
+      return acta;
+    }
 
 }
