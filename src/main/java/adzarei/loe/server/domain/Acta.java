@@ -5,6 +5,7 @@ import org.jvnet.hk2.config.GeneratedServiceName;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -22,5 +23,14 @@ public class Acta {
     @Enumerated(EnumType.STRING)
     private TipoActa tipoActa;
     private String descTipoActa;
+
+    @OneToMany
+    private List<Firma> firmas;
+
+    @OneToMany
+    private List<Orden> ordenes;
+
+    @OneToMany
+    private List<Asistente> asistentes;
 
 }
