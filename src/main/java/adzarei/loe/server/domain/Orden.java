@@ -1,11 +1,15 @@
 package adzarei.loe.server.domain;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Orden{
 
@@ -13,9 +17,11 @@ public class Orden{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+
+    private int numOrden;
+
     @Lob
     @Column(columnDefinition = "TINYTEXT")
-    private int numOrden;
     private String tituloOrden; //TODO: Queremos que sea TINYTEXT. Necesitamos @Lob?
 
     @Lob
@@ -23,7 +29,7 @@ public class Orden{
     private String contenido;
 
     @OneToMany(orphanRemoval = true,mappedBy = "orden")
-    private List<Adjunto> adjuntos;
+    private List<Adjunto> adjuntos = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "acta_id")

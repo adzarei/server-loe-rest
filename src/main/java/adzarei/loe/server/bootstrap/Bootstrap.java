@@ -47,14 +47,15 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         adjunto.setContenido("ADASDFSGNSFGNSDFARH");
         adjunto.setMediaType(MediaType.IMAGE_PNG_VALUE);
 
+
         Orden orden = new Orden();
         orden.setNumOrden(1);
         orden.setTituloOrden("Primera Orden");
         orden.setContenido("Este es el contenido de la orden numero uno.");
-        List<Adjunto> adjuntos = new ArrayList<>();
+        /*List<Adjunto> adjuntos = new ArrayList<>();
         adjuntos.add(adjunto);
         orden.setAdjuntos(adjuntos);
-        adjunto.setOrden(orden);
+        adjunto.setOrden(orden);*/
 
         Acta acta = new Acta();
         acta.setNumHoja(1);
@@ -62,11 +63,11 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         acta.setFActa(LocalDateTime.now());
         acta.setDescTipoActa("Acta de Inicio");
         acta.setNumlibro("VLC-00012");
+        acta.addOrden(orden);
 
-        List<Orden> ordenes = new ArrayList<>();
-        ordenes.add(orden);
-        acta.setOrdenes(ordenes);
-        orden.setActa(acta);
+        actaRepository.save(acta);
+        adjuntoRepository.save(adjunto);
+        ordenRepository.save(orden);
 
 
         Firma firma = new Firma();
@@ -75,6 +76,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         firma.setEmail("AdrianZapater@gmail.com");
         firma.setSello("sfd6g4n3dh4n3xg4n3djhm4s3m43gh4n3ghmchg3nf3hj43th43st7hs4gb34gn34gnb3xd4gb");
         firma.setTipoAgente(TipoAgente.DO);
+        firma = firmaRepository.save(firma);
 
         List<Firma> firmas= new ArrayList<>();
         firmas.add(firma);
@@ -86,6 +88,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         agente.setIdFiscal("21804947G");
         agente.setNombre("José Zapater");
         agente.setTipoAgente(TipoAgente.DO);
+        agente = agenteRepository.save(agente);
 
 
         Libro libro1 = new Libro();
@@ -115,11 +118,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         libro1.setAgentes(agentes);
 
 
-        adjuntoRepository.save(adjunto);
-        ordenRepository.save(orden);
 
-        actaRepository.save(acta);
-        firmaRepository.save(firma);
         libroRepository.save(libro1);
 
 
