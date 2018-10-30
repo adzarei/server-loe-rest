@@ -19,4 +19,8 @@ public class Asistente {
 
     private String cargo;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "acta_id")
+    private Acta acta;
+
 }

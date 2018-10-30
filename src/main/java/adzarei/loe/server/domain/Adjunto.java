@@ -1,5 +1,6 @@
 package adzarei.loe.server.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,4 +19,8 @@ public class Adjunto {
     @Lob
     @Column(columnDefinition = "LONGTEXT")
     private String contenido;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "orden_id")
+    private Orden orden;
 }

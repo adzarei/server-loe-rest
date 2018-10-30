@@ -1,7 +1,6 @@
 package adzarei.loe.server.domain;
 
 import lombok.Data;
-import org.jvnet.hk2.config.GeneratedServiceName;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -18,19 +17,23 @@ public class Acta {
     private int numHoja;
     private LocalDateTime fActa;
 
-    private String numlibro; //TODO: add Libro FK
+    private String numlibro;
 
     @Enumerated(EnumType.STRING)
     private TipoActa tipoActa;
     private String descTipoActa;
 
     @OneToMany
-    private List<Firma> firmas;
+    private List<Firma> firmas; //TODO: decide on mapping of FirmaLibro
 
-    @OneToMany
+    @OneToMany(mappedBy = "acta",orphanRemoval = true)
     private List<Orden> ordenes;
 
-    @OneToMany
+    @OneToMany(mappedBy = "acta",orphanRemoval = true)
     private List<Asistente> asistentes;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "libro_id")
+    private Libro libro;
 
 }

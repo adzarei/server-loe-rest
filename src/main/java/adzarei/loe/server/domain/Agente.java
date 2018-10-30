@@ -23,6 +23,7 @@ public class Agente {
     private LocalDateTime fInicio;
     private LocalDateTime fFin;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "libro_id")
     private Libro libro;
 }

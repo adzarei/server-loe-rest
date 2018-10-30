@@ -22,6 +22,10 @@ public class Orden{
     @Column(columnDefinition = "TEXT") //21,844 caracteres ut-8 como maximo.
     private String contenido;
 
-    @OneToMany
+    @OneToMany(orphanRemoval = true,mappedBy = "orden")
     private List<Adjunto> adjuntos;
+
+    @ManyToOne
+    @JoinColumn(name = "acta_id")
+    private Acta acta;
 }

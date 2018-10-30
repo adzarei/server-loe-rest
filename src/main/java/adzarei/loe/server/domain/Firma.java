@@ -1,14 +1,12 @@
 package adzarei.loe.server.domain;
 
 import lombok.Data;
-import org.jvnet.hk2.config.GeneratedServiceName;
 
 import javax.persistence.*;
 
-@Data
 @Entity
+@Data
 public class Firma {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,4 +17,5 @@ public class Firma {
     private String sello;
     private String certificado;
     private String email;
+
 }

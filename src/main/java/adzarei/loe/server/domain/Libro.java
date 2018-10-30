@@ -27,13 +27,13 @@ public class Libro {
     private String CAE;
     private LocalDateTime fCAE;
 
-    @OneToMany
+    @OneToMany(orphanRemoval = true,mappedBy = "libro")
     private List<Agente> agentes;
 
-    @OneToMany
+    @OneToMany(orphanRemoval = true,mappedBy = "libro")
     private List<Acta> actas;
 
-    @OneToMany
+    @OneToMany(orphanRemoval = true) //TODO: decide on relation
     private List<Firma> firmas;
 
 }
