@@ -34,4 +34,10 @@ public class Orden{
     @ManyToOne
     @JoinColumn(name = "acta_id")
     private Acta acta;
+    
+    public Adjunto addAdjunto(Adjunto adjunto){
+      adjunto.setOrden(this);
+      this.adjuntos.add(adjunto);      
+      return adjunto;
+    }
 }
