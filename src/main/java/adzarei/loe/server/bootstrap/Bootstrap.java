@@ -47,15 +47,16 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         adjunto.setContenido("ADASDFSGNSFGNSDFARH");
         adjunto.setMediaType(MediaType.IMAGE_PNG_VALUE);
 
-
-
         Orden orden = new Orden();
         orden.setNumOrden(1);
         orden.setTituloOrden("Primera Orden");
         orden.setContenido("Este es el contenido de la orden numero uno.");
         orden.addAdjunto(adjunto);
 
-
+        Asistente asistente = new Asistente();
+        asistente.setCargo("Constructor");
+        asistente.setNombre("Maria Brull MArtinez");
+        asistente.setTipoAgente(TipoAgente.CONSTRUCTOR);
 
         Acta acta = new Acta();
         acta.setNumHoja(1);
@@ -64,8 +65,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         acta.setDescTipoActa("Acta de Inicio");
         acta.setNumlibro("VLC-00012");
         acta.addOrden(orden);
-
-
+        acta.addAsistente(asistente);
 
         Firma firma = new Firma();
         firma.setCertificado("043049678964967937");
@@ -75,17 +75,13 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         firma.setTipoAgente(TipoAgente.DO);
         acta.addFirma(firma);
 
-
-
-
         Agente agente = new Agente();
         agente.setFFin(LocalDateTime.now());
         agente.setFInicio(LocalDateTime.now());
         agente.setIdFiscal("21804947G");
         agente.setNombre("José Zapater");
+        agente.setTitulo("Ingeniero Informático");
         agente.setTipoAgente(TipoAgente.DO);
-
-
 
         Libro libro1 = new Libro();
         libro1.setNumlibro("VLC-00012");
@@ -112,6 +108,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         agenteRepository.save(agente);
         ordenRepository.save(orden);
         adjuntoRepository.save(adjunto);
+        asistenteRepository.save(asistente);
 
     }
 }
