@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/openjdk@sha256:fa86daec340d4bbcde9121d9f922e76ba012393ae10acad4e531285adf610edf
     parallelism: 4
       # specify the version you desire here
       # Specify service dependencies here if necessary
