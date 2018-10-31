@@ -37,7 +37,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        initData();
+        //initData();
     }
 
     private void initData() {
@@ -47,16 +47,16 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         adjunto.setContenido("ADASDFSGNSFGNSDFARH");
         adjunto.setMediaType(MediaType.IMAGE_PNG_VALUE);
 
-
         Orden orden = new Orden();
         orden.setNumOrden(1);
         orden.setTituloOrden("Primera Orden");
         orden.setContenido("Este es el contenido de la orden numero uno.");
         orden.addAdjunto(adjunto);
-        /*List<Adjunto> adjuntos = new ArrayList<>();
-        adjuntos.add(adjunto);
-        orden.setAdjuntos(adjuntos);
-        adjunto.setOrden(orden);*/
+
+        Asistente asistente = new Asistente();
+        asistente.setCargo("Constructor");
+        asistente.setNombre("Maria Brull MArtinez");
+        asistente.setTipoAgente(TipoAgente.CONSTRUCTOR);
 
         Acta acta = new Acta();
         acta.setNumHoja(1);
@@ -65,10 +65,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         acta.setDescTipoActa("Acta de Inicio");
         acta.setNumlibro("VLC-00012");
         acta.addOrden(orden);
-
-        adjuntoRepository.save(adjunto);
-        ordenRepository.save(orden);
-
+        acta.addAsistente(asistente);
 
         Firma firma = new Firma();
         firma.setCertificado("043049678964967937");
@@ -78,14 +75,12 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         firma.setTipoAgente(TipoAgente.DO);
         acta.addFirma(firma);
 
-        firmaRepository.save(firma);
-        actaRepository.save(acta);
-
         Agente agente = new Agente();
         agente.setFFin(LocalDateTime.now());
         agente.setFInicio(LocalDateTime.now());
         agente.setIdFiscal("21804947G");
         agente.setNombre("José Zapater");
+        agente.setTitulo("Ingeniero Informático");
         agente.setTipoAgente(TipoAgente.DO);
 
         Libro libro1 = new Libro();
@@ -107,10 +102,13 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         libro1.addFirma(firma);
         libro1.addAgente(agente);
 
-
-        agenteRepository.save(agente);
+        firmaRepository.save(firma);
         libroRepository.save(libro1);
-
+        actaRepository.save(acta);
+        agenteRepository.save(agente);
+        ordenRepository.save(orden);
+        adjuntoRepository.save(adjunto);
+        asistenteRepository.save(asistente);
 
     }
 }
