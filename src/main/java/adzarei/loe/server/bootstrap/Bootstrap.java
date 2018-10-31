@@ -48,15 +48,14 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         adjunto.setMediaType(MediaType.IMAGE_PNG_VALUE);
 
 
+
         Orden orden = new Orden();
         orden.setNumOrden(1);
         orden.setTituloOrden("Primera Orden");
         orden.setContenido("Este es el contenido de la orden numero uno.");
         orden.addAdjunto(adjunto);
-        /*List<Adjunto> adjuntos = new ArrayList<>();
-        adjuntos.add(adjunto);
-        orden.setAdjuntos(adjuntos);
-        adjunto.setOrden(orden);*/
+
+
 
         Acta acta = new Acta();
         acta.setNumHoja(1);
@@ -66,8 +65,6 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         acta.setNumlibro("VLC-00012");
         acta.addOrden(orden);
 
-        adjuntoRepository.save(adjunto);
-        ordenRepository.save(orden);
 
 
         Firma firma = new Firma();
@@ -78,8 +75,8 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         firma.setTipoAgente(TipoAgente.DO);
         acta.addFirma(firma);
 
-        firmaRepository.save(firma);
-        actaRepository.save(acta);
+
+
 
         Agente agente = new Agente();
         agente.setFFin(LocalDateTime.now());
@@ -87,6 +84,8 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         agente.setIdFiscal("21804947G");
         agente.setNombre("José Zapater");
         agente.setTipoAgente(TipoAgente.DO);
+
+
 
         Libro libro1 = new Libro();
         libro1.setNumlibro("VLC-00012");
@@ -107,10 +106,12 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         libro1.addFirma(firma);
         libro1.addAgente(agente);
 
-
-        agenteRepository.save(agente);
+        firmaRepository.save(firma);
         libroRepository.save(libro1);
-
+        actaRepository.save(acta);
+        agenteRepository.save(agente);
+        ordenRepository.save(orden);
+        adjuntoRepository.save(adjunto);
 
     }
 }

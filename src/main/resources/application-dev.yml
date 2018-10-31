@@ -10,11 +10,11 @@ spring:
     database: mysql
     show-sql: true
 
-    properties:
-      javax:
-        persistence:
-          schema-generation:
-            create-source: metadata
-            scripts:
-              action: create
-              create-target: DB_CREATE.sql
+#    properties:
+#      javax:
+#        persistence:
+#          schema-generation:
+#            create-source: metadata
+#            scripts:
+#              action: create
+#              create-target: DB_CREATE.sql
