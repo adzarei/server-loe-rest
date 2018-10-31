@@ -14,7 +14,6 @@ target/
 *.iws
 *.iml
 *.ipr
-.idea/
 
 ### NetBeans ###
 nbproject/private/
@@ -23,8 +22,3 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-
-### OTHER ###
-mvnw
-mvnw.cmd
-misc.xml
