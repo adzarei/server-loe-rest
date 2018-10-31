@@ -14,4 +14,8 @@ public interface LibroMapper {
     @Mapping(source = "id",target = "id")
     LibroDto libroToLibroDTto(Libro libro);
 
+    @Mapping(source = "id", target = "id")
+    Libro libroDtoToLibro(LibroDto libroDto);
+
+
 }

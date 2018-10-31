@@ -8,4 +8,15 @@ public interface LibroService {
 
     List<LibroDto> getAllLibros();
 
+    LibroDto getLibroById(Long id);
+
+    LibroDto getLibroByNumLibro(String numLibro);
+
+    LibroDto createNewLibro(LibroDto libroDto);
+
+    void deleteLibro(Long id);
+
+    void patchLibro(Long id, LibroDto libroDto);
+
+    void updateOrCreateLibro(Long id, LibroDto libroDto);
 }
