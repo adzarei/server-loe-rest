@@ -1,11 +1,11 @@
 package adzarei.loe.server.services;
 
-import adzarei.loe.server.domain.Libro;
+import adzarei.loe.server.api.v1.model.LibroDto;
 
 import java.util.List;
 
 public interface LibroService {
 
-    List<Libro> getAllLibros();
+    List<LibroDto> getAllLibros();
 
 }

@@ -1,5 +1,7 @@
 package adzarei.loe.server.services;
 
+import adzarei.loe.server.api.v1.mapper.LibroMapper;
+import adzarei.loe.server.api.v1.model.LibroDto;
 import adzarei.loe.server.domain.Libro;
 import adzarei.loe.server.respositories.LibroRepository;
 import org.junit.Before;
@@ -16,6 +18,7 @@ import static org.mockito.Mockito.when;
 public class LibroServiceTest {
 
     LibroService libroService;
+    LibroMapper libroMapper;
 
     @Mock
     LibroRepository libroRepository;
@@ -23,7 +26,7 @@ public class LibroServiceTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        libroService = new LibroServiceImpl(libroRepository);
+        libroService = new LibroServiceImpl(libroRepository,LibroMapper.INSTANCE);
     }
 
     @Test
@@ -34,9 +37,9 @@ public class LibroServiceTest {
         when(libroRepository.findAll()).thenReturn(libros);
 
         //When
-        List<Libro> libros2 = libroService.getAllLibros();
+        List<LibroDto> libroDto = libroService.getAllLibros();
 
         //Then
-        assertEquals(3,libros2.size());
+        assertEquals(3,libroDto.size());
     }
 }
