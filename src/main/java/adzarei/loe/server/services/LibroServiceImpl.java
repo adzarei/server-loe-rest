@@ -48,7 +48,10 @@ public class LibroServiceImpl implements LibroService {
 
     @Override
     public LibroDto createNewLibro(LibroDto libroDto) {
-        return null;
+        Libro libro = libroMapper.libroDtoToLibro(libroDto);
+        libro = libroRepository.save(libro);
+
+        return libroMapper.libroToLibroDTto(libro);
     }
 
     @Override
