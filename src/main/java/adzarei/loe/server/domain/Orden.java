@@ -19,8 +19,8 @@ public class Orden{
 
     private int numOrden;
 
-    @Lob
-    @Column(columnDefinition = "TINYTEXT")
+    //@Lob
+    //@Column(columnDefinition = "TINYTEXT")
     private String tituloOrden; //TODO: Queremos que sea TINYTEXT. Necesitamos @Lob?
 
     @Lob

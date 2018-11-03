@@ -28,7 +28,7 @@ public class Acta {
     private String descTipoActa;
 
     @OneToMany
-    private List<Firma> firmas = new ArrayList<>(); //TODO: decide on mapping of FirmaLibro
+    private List<Firma> firmas = new ArrayList<>(); //xTODO: decide on mapping of FirmaLibro
 
     @OneToMany(mappedBy = "acta",orphanRemoval = true)
     private List<Orden> ordenes = new ArrayList<>();
