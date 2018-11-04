@@ -37,7 +37,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        //initData();
+        initData();
     }
 
     private void initData() {
