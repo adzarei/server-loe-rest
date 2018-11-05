@@ -2,6 +2,8 @@ package adzarei.loe.server.security.configuration;
 
 import adzarei.loe.server.security.authentication.filter.TokenAuthenticationFilter;
 import adzarei.loe.server.security.configuration.strategy.NoRedirectStrategy;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -76,21 +78,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    private Filter restAuthenticationFilter() throws Exception {
+    @Bean
+    Filter restAuthenticationFilter() throws Exception {
         final TokenAuthenticationFilter filter = new TokenAuthenticationFilter(PROTECTED_URLS);
         filter.setAuthenticationManager(authenticationManager());
         filter.setAuthenticationSuccessHandler(successHandler());
         return filter;
     }
 
-    private SimpleUrlAuthenticationSuccessHandler successHandler() {
+    @Bean
+    SimpleUrlAuthenticationSuccessHandler successHandler() {
         final SimpleUrlAuthenticationSuccessHandler successHandler = new SimpleUrlAuthenticationSuccessHandler();
         successHandler.setRedirectStrategy(new NoRedirectStrategy());
 
         return successHandler;
     }
 
-    private AuthenticationEntryPoint forbiddenEntryPoint() {
+
+    FilterRegistrationBean disableAutoRegistration(final TokenAuthenticationFilter filter) {
+        final FilterRegistrationBean registration = new FilterRegistrationBean(filter);
+        registration.setEnabled(false);
+        return registration;
+    }
+
+    @Bean
+    AuthenticationEntryPoint forbiddenEntryPoint() {
         return new HttpStatusEntryPoint(HttpStatus.FORBIDDEN);
     }
+
 }

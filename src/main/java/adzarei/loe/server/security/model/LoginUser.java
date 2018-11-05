@@ -1,61 +1,49 @@
 package adzarei.loe.server.security.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
+
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
+import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
-import static java.util.Objects.requireNonNull;
 
-@Value
+@Entity
+@Data
 @Builder
 public class LoginUser implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
-    String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     String username;
     String password;
 
-    @JsonCreator
-    LoginUser(@JsonProperty("id") final String id, @JsonProperty("username") final String username, @JsonProperty("password") final String password) {
-        super();
-        this.id = requireNonNull(id);
-        this.username = requireNonNull(username);
-        this.password = requireNonNull(password);
-    }
+    @OneToMany(mappedBy = "user")
+    List<ActiveToken> token;
 
-    @JsonIgnore
     @Override
-    public Collection<GrantedAuthority> getAuthorities() {
-        return new ArrayList<>();
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
-    @JsonIgnore
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
-    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
-    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
@@ -66,3 +54,4 @@ public class LoginUser implements UserDetails {
         return true;
     }
 }
+

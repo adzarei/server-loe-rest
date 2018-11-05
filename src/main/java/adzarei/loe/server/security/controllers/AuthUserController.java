@@ -29,19 +29,16 @@ public class AuthUserController {
     }
 
     @PostMapping("/register")
-    @ResponseStatus(HttpStatus.OK)
-    public String register(@RequestParam String username, @RequestParam String password){
+    @ResponseStatus(HttpStatus.CREATED)
+    public LoginUser register(@RequestParam String username, @RequestParam String password){
 
 
         LoginUser user = LoginUser.builder()
-                .id(username)
                 .username(username)
                 .password(password)
                 .build();
 
-        userService.saveLoginUser(user);
-
-        return login(username,password);
+        return userService.saveLoginUser(user);
     }
 
     @PostMapping("/login")

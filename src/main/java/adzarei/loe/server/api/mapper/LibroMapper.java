@@ -1,7 +1,7 @@
-package adzarei.loe.server.api.v1.mapper;
+package adzarei.loe.server.api.mapper;
 
-import adzarei.loe.server.api.v1.model.LibroDto;
-import adzarei.loe.server.domain.Libro;
+import adzarei.loe.server.api.model.LibroDto;
+import adzarei.loe.server.api.domain.Libro;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

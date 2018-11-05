@@ -14,20 +14,20 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UUIDAuthenticationService implements UserAuthenticationService {
 
-    @NonNull
-    LoginUserService userService;
+    //@NonNull
+    //LoginUserService userService;
 
     @Override
     public Optional<String> login(String username, String password) {
         final String uuid = UUID.randomUUID().toString();
         final LoginUser user = LoginUser
                 .builder()
-                .id(uuid)
+                //.id(uuid)
                 .username(username)
                 .password(password)
                 .build();
 
-        userService.saveLoginUser(user);
+        //userService.saveLoginUser(user);
         return Optional.of(uuid);
     }
 
