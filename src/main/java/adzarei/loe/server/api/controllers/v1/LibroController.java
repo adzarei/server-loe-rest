@@ -1,6 +1,6 @@
 package adzarei.loe.server.api.controllers.v1;
 
-import adzarei.loe.server.api.model.LibroDto;
+import adzarei.loe.server.api.dtomodel.LibroDto;
 import adzarei.loe.server.api.services.LibroService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

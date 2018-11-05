@@ -1,6 +1,6 @@
 package adzarei.loe.server.api.services;
 
-import adzarei.loe.server.api.model.LibroDto;
+import adzarei.loe.server.api.dtomodel.LibroDto;
 
 import java.util.List;
 

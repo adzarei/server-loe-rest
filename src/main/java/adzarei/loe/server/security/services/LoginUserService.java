@@ -7,8 +7,9 @@ import java.util.Optional;
 
 public interface LoginUserService {
 
-     LoginUser saveLoginUser(LoginUser loginUser);
+     Optional<LoginUser> saveLoginUser(LoginUser loginUser);
      Optional<LoginUser> findLoginUser(Long id);
      Optional<LoginUser> findLoginUserByUsername(String username);
+     Optional<LoginUser> patchLoginUser(Long id, LoginUser user);
 
 }

@@ -1,7 +1,7 @@
 package adzarei.loe.server.api.services;
 
 import adzarei.loe.server.api.mapper.LibroMapper;
-import adzarei.loe.server.api.model.LibroDto;
+import adzarei.loe.server.api.dtomodel.LibroDto;
 import adzarei.loe.server.api.domain.Libro;
 import adzarei.loe.server.api.respositories.LibroRepository;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;

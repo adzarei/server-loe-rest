@@ -1,4 +1,4 @@
-package adzarei.loe.server.security.controllers;
+package adzarei.loe.server.security.authentication.controllers;
 
 import adzarei.loe.server.security.authentication.services.UserAuthenticationService;
 import adzarei.loe.server.security.model.LoginUser;
@@ -19,18 +19,13 @@ public class AuthUserController {
     @NonNull
     public final UserAuthenticationService authService;
 
-    @NonNull
-    LoginUserService userService;
-
-
-    public AuthUserController(UserAuthenticationService authService, LoginUserService userService) {
+    public AuthUserController(UserAuthenticationService authService) {
         this.authService = authService;
-        this.userService = userService;
     }
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public LoginUser register(@RequestParam String username, @RequestParam String password){
+    public void register(@RequestParam String username, @RequestParam String password){
 
 
         LoginUser user = LoginUser.builder()
@@ -38,13 +33,15 @@ public class AuthUserController {
                 .password(password)
                 .build();
 
-        return userService.saveLoginUser(user);
+        authService.register(user).orElseThrow(() -> new RuntimeException("Error: No user registered"));
     }
 
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password){
 
-        return authService.login(username,password).orElseThrow(() -> new RuntimeException("Invalid login"));
+        String uuid = authService.login(username,password).orElseThrow(() -> new RuntimeException("Invalid login"));
+
+        return uuid;
 
     }
 

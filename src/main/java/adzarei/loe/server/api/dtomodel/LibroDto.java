@@ -1,4 +1,4 @@
-package adzarei.loe.server.api.model;
+package adzarei.loe.server.api.dtomodel;
 
 import lombok.Data;
 

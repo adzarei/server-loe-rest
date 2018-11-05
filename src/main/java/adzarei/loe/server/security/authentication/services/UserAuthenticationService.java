@@ -12,5 +12,5 @@ public interface UserAuthenticationService {
 
     void logout(LoginUser user);
 
-
+    Optional<LoginUser> register(LoginUser user);
 }

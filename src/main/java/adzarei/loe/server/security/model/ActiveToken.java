@@ -1,6 +1,8 @@
 package adzarei.loe.server.security.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
@@ -12,7 +14,7 @@ public class ActiveToken {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id ;
     @Column(columnDefinition = "varchar(36)")
-    String token;
+    String uuid;
 
     @ManyToOne
     LoginUser user;
