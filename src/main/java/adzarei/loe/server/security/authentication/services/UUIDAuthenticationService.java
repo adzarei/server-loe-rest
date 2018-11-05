@@ -51,9 +51,15 @@ public class UUIDAuthenticationService implements UserAuthenticationService {
 
 
     @Override
-    public Optional<LoginUser> findLoginUserByToken(String token) {
+    public Optional<LoginUser> findLoginUserByTokenUuid(String uuid) {
         //TODO: Find by Token
-        return Optional.empty();
+        ActiveToken token = tokenService
+                .findTokenByUuid(uuid)
+                .orElseThrow(() -> new ResourceNotFoundException("Token with UUID:" + uuid + " not found"));
+        Optional<LoginUser> user = userService.findLoginUserByToken(token);
+
+
+        return user;
     }
 
     @Override

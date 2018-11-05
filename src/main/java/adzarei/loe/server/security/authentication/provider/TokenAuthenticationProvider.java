@@ -23,13 +23,15 @@ public final class TokenAuthenticationProvider extends AbstractUserDetailsAuthen
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {}
 
+    //TODO: username has to be loginuser.usernam
+    //
     @Override
     protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
         final Object token = authentication.getCredentials();
         return Optional
                 .ofNullable(token)
                 .map(String::valueOf)
-                .flatMap(userAuthenticationService::findLoginUserByToken)
+                .flatMap(userAuthenticationService::findLoginUserByTokenUuid)
                 .orElseThrow(() -> new UsernameNotFoundException("Cannot find user with token="+token));
     }
 }

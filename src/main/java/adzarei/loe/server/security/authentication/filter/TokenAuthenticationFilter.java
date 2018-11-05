@@ -34,6 +34,7 @@ public final class TokenAuthenticationFilter extends AbstractAuthenticationProce
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
+
         final String param = ofNullable(request.getHeader(HttpHeaders.AUTHORIZATION))
                 .orElse(request.getParameter("t"));
 
@@ -41,6 +42,7 @@ public final class TokenAuthenticationFilter extends AbstractAuthenticationProce
                 .map(value -> removeStart(value,BEARER))
                 .map(String::trim)
                 .orElseThrow(() -> new BadCredentialsException("Bearer Token missing"));
+
         final Authentication auth = new UsernamePasswordAuthenticationToken(token,token);
 
         return getAuthenticationManager().authenticate(auth);

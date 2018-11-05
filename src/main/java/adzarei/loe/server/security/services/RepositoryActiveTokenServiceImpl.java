@@ -39,4 +39,9 @@ public class RepositoryActiveTokenServiceImpl implements ActiveTokenService {
     public Optional<ActiveToken> patchToken(Long id, ActiveToken token) {
         return Optional.empty();
     }
+
+    @Override
+    public Optional<ActiveToken> findTokenByUuid(String uuid) {
+        return Optional.of(activeTokenRepository.findByUuid(uuid));
+    }
 }

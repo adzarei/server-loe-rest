@@ -1,14 +1,15 @@
 package adzarei.loe.server.security.services;
 
+import adzarei.loe.server.security.model.ActiveToken;
 import adzarei.loe.server.security.repositories.LoginUserRepository;
 import adzarei.loe.server.security.model.LoginUser;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Primary
@@ -57,5 +58,12 @@ public class RepositoryLoginUserServiceImpl implements LoginUserService {
 
 
         return Optional.empty();
+    }
+
+    @Override
+    public Optional<LoginUser> findLoginUserByToken(ActiveToken token) {
+        List<ActiveToken> tokens = new ArrayList<>();
+        tokens.add(token);
+        return Optional.of(loginUserRepository.findLoginUserByTokens(tokens));
     }
 }

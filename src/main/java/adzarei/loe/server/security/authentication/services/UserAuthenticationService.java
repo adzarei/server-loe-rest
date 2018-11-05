@@ -8,7 +8,7 @@ public interface UserAuthenticationService {
 
     Optional<String> login(String username, String password);
 
-    Optional<LoginUser> findLoginUserByToken(String token);
+    Optional<LoginUser> findLoginUserByTokenUuid(String token);
 
     void logout(LoginUser user);
 

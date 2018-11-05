@@ -13,4 +13,5 @@ public interface ActiveTokenService {
     Optional<ActiveToken> patchToken(Long id, ActiveToken token);
 
 
+    Optional<ActiveToken> findTokenByUuid(String uuid);
 }

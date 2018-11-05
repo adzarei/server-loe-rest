@@ -2,7 +2,9 @@ package adzarei.loe.server.api.controllers.v1;
 
 import adzarei.loe.server.api.dtomodel.LibroDto;
 import adzarei.loe.server.api.services.LibroService;
+import adzarei.loe.server.security.model.LoginUser;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
