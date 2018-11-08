@@ -2,6 +2,9 @@ package adzarei.loe.server.api.bootstrap;
 
 import adzarei.loe.server.api.domain.*;
 import adzarei.loe.server.api.respositories.*;
+import adzarei.loe.server.security.model.LoginUser;
+import adzarei.loe.server.security.repositories.LoginUserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.http.MediaType;
@@ -10,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
+@AllArgsConstructor
 public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private LibroRepository libroRepository;
@@ -19,20 +23,12 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private AgenteRepository agenteRepository;
     private AsistenteRepository asistenteRepository;
     private FirmaRepository firmaRepository;
+    private LoginUserRepository loginUserRepository;
 
-    public Bootstrap(LibroRepository libroRepository, ActaRepository actaRepository, OrdenRepository ordenRepository, AdjuntoRepository adjuntoRepository, AgenteRepository agenteRepository, AsistenteRepository asistenteRepository, FirmaRepository firmaRepository) {
-        this.libroRepository = libroRepository;
-        this.actaRepository = actaRepository;
-        this.ordenRepository = ordenRepository;
-        this.adjuntoRepository = adjuntoRepository;
-        this.agenteRepository = agenteRepository;
-        this.asistenteRepository = asistenteRepository;
-        this.firmaRepository = firmaRepository;
-    }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        initData();
+        //initData();
     }
 
     private void initData() {
@@ -97,6 +93,12 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         libro1.addFirma(firma);
         libro1.addAgente(agente);
 
+        LoginUser usuario = new LoginUser();
+        usuario.setUsername("admin");
+        usuario.setPassword("pw");
+        libro1.setPropietario(usuario);
+
+        loginUserRepository.save(usuario);
         firmaRepository.save(firma);
         libroRepository.save(libro1);
         actaRepository.save(acta);

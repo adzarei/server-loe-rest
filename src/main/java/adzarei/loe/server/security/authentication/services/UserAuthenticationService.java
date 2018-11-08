@@ -1,5 +1,6 @@
 package adzarei.loe.server.security.authentication.services;
 
+import adzarei.loe.server.security.model.ActiveToken;
 import adzarei.loe.server.security.model.LoginUser;
 
 import java.util.Optional;

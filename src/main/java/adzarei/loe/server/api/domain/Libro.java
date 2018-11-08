@@ -1,5 +1,6 @@
 package adzarei.loe.server.api.domain;
 
+import adzarei.loe.server.security.model.LoginUser;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -28,6 +29,10 @@ public class Libro {
     private String CAE;
     private LocalDateTime fCAE;
 
+    @ManyToOne( fetch = FetchType.LAZY)
+    @JoinColumn(name = "login_user_id")
+    private LoginUser propietario;
+
     @OneToMany(orphanRemoval = true,mappedBy = "libro")
     private List<Agente> agentes = new ArrayList<>();
 
@@ -52,5 +57,6 @@ public class Libro {
       acta.setLibro(this);
       return acta;
     }
+
 
 }

@@ -13,9 +13,10 @@ public class ActiveToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id ;
+
     @Column(columnDefinition = "varchar(36)")
     String uuid;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     LoginUser user;
 }

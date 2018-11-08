@@ -13,7 +13,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Builder
+@NoArgsConstructor
 public class LoginUser implements UserDetails {
 
     private static final long serialVersionUID = 1L;

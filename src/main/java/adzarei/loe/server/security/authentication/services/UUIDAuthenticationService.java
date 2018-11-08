@@ -11,6 +11,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.NotNull;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -51,8 +52,8 @@ public class UUIDAuthenticationService implements UserAuthenticationService {
 
 
     @Override
-    public Optional<LoginUser> findLoginUserByTokenUuid(String uuid) {
-        //TODO: Find by Token
+    public Optional<LoginUser> findLoginUserByTokenUuid(@NotNull String uuid){
+
         ActiveToken token = tokenService
                 .findTokenByUuid(uuid)
                 .orElseThrow(() -> new ResourceNotFoundException("Token with UUID:" + uuid + " not found"));

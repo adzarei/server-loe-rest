@@ -42,6 +42,7 @@ public class RepositoryActiveTokenServiceImpl implements ActiveTokenService {
 
     @Override
     public Optional<ActiveToken> findTokenByUuid(String uuid) {
-        return Optional.of(activeTokenRepository.findByUuid(uuid));
+        ActiveToken token = activeTokenRepository.findByUuid(uuid);
+        return Optional.of(token);
     }
 }

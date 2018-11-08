@@ -12,6 +12,5 @@ public interface LoginUserService {
      Optional<LoginUser> findLoginUser(Long id);
      Optional<LoginUser> findLoginUserByUsername(String username);
      Optional<LoginUser> patchLoginUser(Long id, LoginUser user);
-
-    Optional<LoginUser> findLoginUserByToken(ActiveToken token);
+     Optional<LoginUser> findLoginUserByToken(ActiveToken token);
 }

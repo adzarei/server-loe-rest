@@ -1,5 +1,6 @@
-package adzarei.loe.server.api.domain;
+package adzarei.loe.server.security.authentication.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -7,13 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 @Data
-@Entity
-public class Usuario {
-
+@AllArgsConstructor
+public class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String nombreusuario;
-    String contraseña;
+    private String uuid;
 }
