@@ -57,6 +57,7 @@ public class UUIDAuthenticationService implements UserAuthenticationService {
         ActiveToken token = tokenService
                 .findTokenByUuid(uuid)
                 .orElseThrow(() -> new ResourceNotFoundException("Token with UUID:" + uuid + " not found"));
+
         Optional<LoginUser> user = userService.findLoginUserByToken(token);
 
 

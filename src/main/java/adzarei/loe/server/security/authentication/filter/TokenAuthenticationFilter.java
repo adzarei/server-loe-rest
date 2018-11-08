@@ -3,6 +3,7 @@ package adzarei.loe.server.security.authentication.filter;
 
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,6 +16,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 
 import static java.util.Optional.ofNullable;
@@ -38,14 +40,23 @@ public final class TokenAuthenticationFilter extends AbstractAuthenticationProce
         final String param = ofNullable(request.getHeader(HttpHeaders.AUTHORIZATION))
                 .orElse(request.getParameter("t"));
 
-        final String token = ofNullable(param)
+        @NotNull final String token = ofNullable(param)
                 .map(value -> removeStart(value,BEARER))
                 .map(String::trim)
                 .orElseThrow(() -> new BadCredentialsException("Bearer Token missing"));
 
-        final Authentication auth = new UsernamePasswordAuthenticationToken(token,token);
+        /*if(token.equals("null"))
+            throw new AuthenticationCredentialsNotFoundException("Null Token");
+        */
 
-        return getAuthenticationManager().authenticate(auth);
+        Authentication auth = new UsernamePasswordAuthenticationToken(token,token);
+        try {
+            auth = getAuthenticationManager().authenticate(auth);
+        } catch ( NullPointerException npe){
+            throw new AuthenticationCredentialsNotFoundException("Invalid token");
+        }
+
+        return auth;
     }
 
     @Override
