@@ -1,6 +1,8 @@
 package adzarei.loe.server.api.bootstrap;
 
 import adzarei.loe.server.api.domain.*;
+import adzarei.loe.server.api.domain.tipos.TipoActa;
+import adzarei.loe.server.api.domain.tipos.TipoAgente;
 import adzarei.loe.server.api.respositories.*;
 import adzarei.loe.server.security.model.LoginUser;
 import adzarei.loe.server.security.repositories.LoginUserRepository;

@@ -1,4 +1,4 @@
-package adzarei.loe.server.api.domain;
+package adzarei.loe.server.api.domain.tipos;
 
 public enum TipoActa {
     INSPECION_PREVIA("A-00"),

@@ -1,5 +1,6 @@
 package adzarei.loe.server.api.domain;
 
+import adzarei.loe.server.api.domain.tipos.TipoActa;
 import lombok.Getter;
 import lombok.Setter;
 

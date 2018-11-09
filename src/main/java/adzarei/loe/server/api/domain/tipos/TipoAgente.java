@@ -1,4 +1,4 @@
-package adzarei.loe.server.api.domain;
+package adzarei.loe.server.api.domain.tipos;
 
 public enum TipoAgente {
     DO("C-00"),

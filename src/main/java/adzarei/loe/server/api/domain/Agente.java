@@ -1,6 +1,7 @@
 package adzarei.loe.server.api.domain;
 
 
+import adzarei.loe.server.api.domain.tipos.TipoAgente;
 import lombok.Data;
 
 import javax.persistence.*;
