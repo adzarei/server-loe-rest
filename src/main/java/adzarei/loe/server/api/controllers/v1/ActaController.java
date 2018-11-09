@@ -21,7 +21,7 @@ public class ActaController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ActaDto> getActasByLibroId(@RequestParam Long id){
-        return actaService.getActasByLibroId(id);
+    public List<ActaDto> getActasByLibroId(@RequestParam Long libroid){
+        return actaService.getActasByLibroId(libroid);
     }
 }
