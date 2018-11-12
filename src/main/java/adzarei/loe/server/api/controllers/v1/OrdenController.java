@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-
+@RequestMapping(OrdenController.BASE_URL)
 public class OrdenController {
     public static final String BASE_URL = "/api/v1/ordenes";
     private final OrdenService ordenService;
