@@ -21,6 +21,7 @@ public class Acta {
     private int numHoja;
     private LocalDateTime fActa;
 
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String numlibro;
 
     @Enumerated(EnumType.STRING)

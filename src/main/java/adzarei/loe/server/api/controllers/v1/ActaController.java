@@ -24,4 +24,10 @@ public class ActaController {
     public List<ActaDto> getActasByLibroId(@RequestParam Long libroid){
         return actaService.getActasByLibroId(libroid);
     }
+
+    @GetMapping("/next-numHoja")
+    @ResponseStatus(HttpStatus.OK)
+    public Integer getNextNumHoja(@RequestParam Long libroid){
+        return actaService.getNextNumHoja(libroid);
+    }
 }

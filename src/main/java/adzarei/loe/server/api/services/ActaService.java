@@ -7,4 +7,6 @@ import java.util.List;
 public interface ActaService {
 
     List<ActaDto> getActasByLibroId(Long id);
+
+    int getNextNumHoja(Long id);
 }

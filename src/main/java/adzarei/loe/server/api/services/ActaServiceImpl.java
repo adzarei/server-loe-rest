@@ -1,10 +1,10 @@
 package adzarei.loe.server.api.services;
 
+import adzarei.loe.server.api.domain.Acta;
 import adzarei.loe.server.api.dtomodel.ActaDto;
 import adzarei.loe.server.api.mapper.ActaMapper;
 import adzarei.loe.server.api.respositories.ActaRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,5 +22,11 @@ public class ActaServiceImpl implements ActaService {
         return repository.getAllActasByLibroId(id).stream()
                 .map( mapper :: actaToActaDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public int getNextNumHoja(Long libroId) {
+        Acta lastActa =repository.getTopActaByLibroIdOrderByNumHojaDesc(libroId);
+        return lastActa.getNumHoja() + 1;
     }
 }

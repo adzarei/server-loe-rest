@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ActaRepository extends JpaRepository<Acta,Long>, CrudRepository<Acta,Long> {
     List<Acta> getAllActasByLibroId(Long id);
+    Acta getTopActaByLibroIdOrderByNumHojaDesc(Long id);
 }
