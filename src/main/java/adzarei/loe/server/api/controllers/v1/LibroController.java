@@ -15,7 +15,7 @@ import java.util.List;
 public class LibroController {
 
     public static final String BASE_URL = "/api/v1/libros";
-    public final LibroService libroService;
+    private final LibroService libroService;
 
     public LibroController(LibroService libroService) {
         this.libroService = libroService;
