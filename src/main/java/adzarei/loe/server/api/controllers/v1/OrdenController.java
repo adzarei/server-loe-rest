@@ -24,4 +24,11 @@ public class OrdenController {
     public List<OrdenDto> getOrdenesByActaId(@RequestParam Long actaid){
         return ordenService.getOrdenesByActaId(actaid);
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createNewOrden(@RequestBody OrdenDto orden){
+        ordenService.createNewOrden(orden);
+    }
+
 }

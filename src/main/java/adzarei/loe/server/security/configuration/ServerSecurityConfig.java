@@ -30,7 +30,7 @@ import static java.util.Objects.requireNonNull;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final RequestMatcher PUBLIC_URLS = new OrRequestMatcher(
             new AntPathRequestMatcher("/auth/**"),
@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     TokenAuthenticationProvider authProvider;
 
-    SecurityConfig(final TokenAuthenticationProvider provider) {
+    ServerSecurityConfig(final TokenAuthenticationProvider provider) {
         super();
         this.authProvider = requireNonNull(provider);
     }

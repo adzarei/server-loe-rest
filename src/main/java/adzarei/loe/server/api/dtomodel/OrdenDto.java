@@ -9,4 +9,5 @@ public class OrdenDto {
     private int numOrden;
     private String tituloOrden;
     private String contenido;
+    private Long actaId;
 }

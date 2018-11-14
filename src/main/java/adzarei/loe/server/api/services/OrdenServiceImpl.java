@@ -19,7 +19,14 @@ public class OrdenServiceImpl implements OrdenService {
     @Override
     public List<OrdenDto> getOrdenesByActaId(Long id) {
         return ordenRepository.getByActaId(id).stream()
-                .map(mapper::OrdenToOrdenDto)
+                .map(mapper::ordenToOrdenDto)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void createNewOrden( OrdenDto ordenDto) {
+        ordenRepository.save(mapper.ordenDtoToOrden(ordenDto));
+    }
+
+
 }

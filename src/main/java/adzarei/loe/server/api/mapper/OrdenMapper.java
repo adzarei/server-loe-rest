@@ -12,8 +12,8 @@ public interface OrdenMapper {
     OrdenMapper INSTANCE = Mappers.getMapper(OrdenMapper.class);
 
     @Mapping(target = "id")
-    OrdenDto OrdenToOrdenDto(Orden orden);
+    OrdenDto ordenToOrdenDto(Orden orden);
 
     @Mapping(target = "numOrden")
-    Orden OrdenDtoToOrden(OrdenDto ordenDto);
+    Orden ordenDtoToOrden(OrdenDto ordenDto);
 }

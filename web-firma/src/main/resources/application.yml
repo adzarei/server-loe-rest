@@ -1,0 +1,45 @@
+server:
+  port: 8081
+
+spring:
+  thymeleaf:
+    cache: false
+    check-template: true
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
+    # excluded-view-names:
+    # template-resolver-order:
+    # view-names:
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/webfirma?autoReconnect=true&useSSL=false
+    username: sl_dev_user
+    password: Adzarei66
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    show-sql: true
+
+
+#    properties:
+#      javax:
+#        persistence:
+#          schema-generation:
+#            create-source: metadata
+#            scripts:
+#              action: create
+#              create-target: DB_CREATE.sql
+
+#
+#logging:
+#  level:
+#    root: WARN
+#    org.springframework.web: INFO
+#    org.springframework.security: INFO

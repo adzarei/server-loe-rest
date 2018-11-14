@@ -7,4 +7,5 @@ import java.util.List;
 public interface OrdenService {
 
     List<OrdenDto> getOrdenesByActaId(Long id);
+    void createNewOrden(OrdenDto ordenDto);
 }
