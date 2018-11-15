@@ -30,7 +30,7 @@ public class WebFirmaSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/img/**",
                         "/webjars/**").permitAll()
-                .antMatchers("/user/**").authenticated()//.hasRole("USER")
+                .antMatchers("/webfirma/**").authenticated()//.hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

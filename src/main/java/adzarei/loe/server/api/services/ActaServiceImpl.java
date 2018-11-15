@@ -5,6 +5,7 @@ import adzarei.loe.server.api.dtomodel.ActaDto;
 import adzarei.loe.server.api.mapper.ActaMapper;
 import adzarei.loe.server.api.respositories.ActaRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,5 +29,10 @@ public class ActaServiceImpl implements ActaService {
     public int getNextNumHoja(Long libroId) {
         Acta lastActa =repository.getTopActaByLibroIdOrderByNumHojaDesc(libroId);
         return lastActa.getNumHoja() + 1;
+    }
+
+    @Override
+    public ActaDto getActaById(Long id) {
+        return mapper.actaToActaDto(repository.findById(id).orElseThrow(() -> new ResourceNotFoundException()));
     }
 }

@@ -102,6 +102,13 @@
             <version>${commons-lang.version}</version>
         </dependency>
 
+		<!--<dependency>-->
+			<!--<groupId>adzarei.loe</groupId>-->
+			<!--<artifactId>web-firma</artifactId>-->
+			<!--<version>0.0.1-SNAPSHOT</version>-->
+			<!--<scope>compile</scope>-->
+		<!--</dependency>-->
+
     </dependencies>
 	<build>
 		<plugins>
