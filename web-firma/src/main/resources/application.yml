@@ -17,9 +17,14 @@ spring:
     # view-names:
 
   datasource:
-    url: jdbc:mysql://localhost:3306/webfirma?autoReconnect=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/serverloe?autoReconnect=true&useSSL=false
     username: sl_dev_user
     password: Adzarei66
+#    url: jdbc:mysql://localhost:3306/webfirma?autoReconnect=true&useSSL=false
+#    username: sl_dev_user
+#    password: Adzarei66
+
+
   jpa:
     hibernate:
       ddl-auto: validate

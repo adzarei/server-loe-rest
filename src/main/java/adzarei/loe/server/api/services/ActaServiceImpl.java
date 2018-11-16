@@ -31,8 +31,16 @@ public class ActaServiceImpl implements ActaService {
         return lastActa.getNumHoja() + 1;
     }
 
+
     @Override
     public ActaDto getActaById(Long id) {
         return mapper.actaToActaDto(repository.findById(id).orElseThrow(() -> new ResourceNotFoundException()));
     }
+
+    @Override
+    public Long newActa(Acta acta) {
+
+        return repository.save(acta).getId();
+    }
+
 }

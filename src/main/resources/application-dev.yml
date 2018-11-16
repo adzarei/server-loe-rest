@@ -10,7 +10,7 @@ spring:
     database: mysql
     show-sql: true
 
-
+#
 #    properties:
 #      javax:
 #        persistence:

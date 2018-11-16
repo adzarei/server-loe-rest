@@ -1,6 +1,7 @@
 package adzarei.loe.server.api.controllers.v1;
 
 
+import adzarei.loe.server.api.domain.Acta;
 import adzarei.loe.server.api.dtomodel.ActaDto;
 import adzarei.loe.server.api.services.ActaService;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,12 @@ public class ActaController {
 
     @GetMapping("/next-numHoja")
     @ResponseStatus(HttpStatus.OK)
-    public Integer getNextNumHoja(@RequestParam Long libroid){
-        return actaService.getNextNumHoja(libroid);
+    public Integer getNextNumHoja(@RequestParam Long libroid){ return actaService.getNextNumHoja(libroid); }
+
+
+    @PostMapping("/new")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Long generarActa(@RequestBody Acta acta){
+        return actaService.newActa(acta);
     }
 }

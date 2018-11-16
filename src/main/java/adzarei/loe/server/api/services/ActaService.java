@@ -12,4 +12,6 @@ public interface ActaService {
     int getNextNumHoja(Long id);
 
     ActaDto getActaById(Long id);
+
+    Long newActa(Acta acta);
 }

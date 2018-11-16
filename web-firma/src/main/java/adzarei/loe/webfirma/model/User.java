@@ -1,4 +1,4 @@
-package adzarei.loe.webfirma.domain;
+package adzarei.loe.webfirma.model;
 
 import lombok.Data;
 
@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "user")
 public class User {
 
     @Id

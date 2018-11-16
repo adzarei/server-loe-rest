@@ -2,11 +2,16 @@ package adzarei.loe.server.api.controllers.v1;
 
 import adzarei.loe.server.api.dtomodel.LibroDto;
 import adzarei.loe.server.api.services.LibroService;
-import adzarei.loe.server.security.model.LoginUser;
+import adzarei.loe.server.security.firma.KeyTool;
+
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Key;
+import java.security.cert.Certificate;
+
+import java.security.KeyStore;
+import java.security.cert.X509Certificate;
 import java.util.List;
 
 @RestController
@@ -23,7 +28,11 @@ public class LibroController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<LibroDto> getListOfLibros(){
+    public List<LibroDto> getListOfLibros() throws Exception {
+
+        KeyTool keyTool = new KeyTool();
+        keyTool.generateCertificate();
+
         return libroService.getAllLibros();
     }
 

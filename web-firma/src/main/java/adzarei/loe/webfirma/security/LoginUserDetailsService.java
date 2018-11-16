@@ -1,6 +1,6 @@
 package adzarei.loe.webfirma.security;
 
-import adzarei.loe.webfirma.domain.User;
+import adzarei.loe.webfirma.model.User;
 import adzarei.loe.webfirma.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
